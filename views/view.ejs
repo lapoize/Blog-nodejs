@@ -1,0 +1,57 @@
+<%- include header %>  
+
+<div class="post-content">
+	<div class="ui grid">
+		<div class="sixteen wide column">
+      		<div class="ui segment">
+				作者：<a href="#"><%= article.name %></a> |   
+				日期：<%= article.time.minute %> 
+				<br/>
+				<% if (user.name.toString()==article.name.toString()) { %>  
+					<form name="<%='a'+article._id%>" method="post" url='/'>  
+    					<input type="hidden" name="action" value="delete"/>
+  						<input type="hidden" name="id" value="<%=article._id %>"/>
+  						<input type="hidden" name="writer" value="<%= article.name %>"/>
+					</form> 
+					<a href="javascript:<%='a'+article._id%>.submit();">DELETE</a>
+					<form name="edit" method="post" url='/'>  
+    					<input type="hidden" name="action" value="edit"/>
+  						<input type="hidden" name="id" value="<%=article._id %>"/>
+  						<input type="hidden" name="writer" value="<%= article.name %>"/>
+					</form> 
+					<a href="javascript:edit.submit();">EDIT</a>
+				<% }%>
+				<p><%- article.post %></p>
+     		</div>
+    	</div>
+  	</div>
+</div>
+
+<div class="ui comments">
+	<h3 class="ui dividing header">Comments</h3>
+ 	<div class="comment">
+  		<% comment.forEach(function (context, index) { %>  
+  			<div class="content">
+  				<a class="author"><%= context.name %></a>
+				<div class="metadata">
+    				<span class="date"><%= context.time.minute %></span>
+    			</div>
+    			<div class="text"><%= context.post %> </div>
+  			</div>
+  			<div class="ui divider"></div>
+		<% }) %>  
+	</div>
+</div>
+
+
+<div class="ui comments">
+	<h3 class="ui dividing header">Reply</h3>
+	<form class="ui reply form" name="comment" method="post" url='/'>
+		<textarea name="context" rows="5"></textarea><br />
+		<input type="hidden" name="action" value="comment"/>
+		<input type="hidden" name="id" value="<%=article._id%>"/>
+	</form>
+	<div class="ui blue labeled submit icon button" onClick="javascript:comment.submit();"><i class="icon edit"></i> Reply </div>
+</div>
+
+<%- include footer %>

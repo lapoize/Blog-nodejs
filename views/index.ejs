@@ -1,0 +1,21 @@
+<%- include header %>  
+
+<% posts.forEach(function (post, index) { %>  
+    <form name="<%='a'+post._id%>" method="post" url='/'>  
+    	  <input type="hidden" name="action" value="view"/>
+  		  <input type="hidden" name="id" value="<%=post._id %>"/>
+  		  <input type="hidden" name="writer" value="<%= post.name %>"/>
+	  </form> 
+    <p><h2><a href="javascript:<%='a'+post._id%>.submit();"><%= post.title %></a></h2></p>  
+    <p class="info">  
+        作者：<a href="#"><%= post.name %></a> |   
+        日期：<%= post.time.minute %>  
+    </p>  
+    <% if (post.post.toString().length>100) { %>  
+        <p><%-post.post.toString().substring(0,100)%><br><a href="javascript:<%='a'+post._id%>.submit();">read more</a></p>
+    <% } else { %>  
+    <p><%-post.post%></p>
+    <% } %> 
+<% }) %>  
+
+<%- include footer %> 

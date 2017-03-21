@@ -1,0 +1,10 @@
+<%- include header %>  
+<form class="ui form" name="edit" method="post" url='/'>  
+    <textarea rows="20" name="post"><%= article.post.toString().replace(new RegExp("<br>", "g"),'\r\n');%></textarea>
+	<input type="hidden" name="title" value="<%=article.title%>"/>
+  	<input type="hidden" name="id" value="<%=article._id %>"/>
+  	<input type="hidden" name="writer" value="<%= article.name %>"/>
+	<input type="hidden" name="action" value="doedit"/>
+	<button class="ui button" type="submit">EDIT</button>
+</form> 
+<%- include footer %>

@@ -1,0 +1,12 @@
+<%- include header %>  
+
+<div class="ui comments">
+    <form class="ui reply form" name="POST" method="post" url='/post'>
+        TITLE:<br />  
+        <input type="text" name="title" /><br />  
+        ARTICLE:<br />  
+        <textarea name="post" rows="20"></textarea><br />   
+    </form>  
+    <div class="ui blue labeled submit icon button" onClick="javascript:POST.submit();"><i class="icon edit"></i> POST </div>
+</div>
+<%- include footer %>  

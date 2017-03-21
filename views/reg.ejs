@@ -1,0 +1,23 @@
+<%- include header %>  
+
+<form class="ui form"method="post">
+    <div class="field">
+        <label>用户名：</label>
+        <input type="text" name="name">
+    </div>
+    <div class="field">
+        <label>密码：</label>
+        <input type="password" name="password">
+    </div>
+    <div class="field">
+        <label>确认密码：</label>
+        <input type="password" name="password-repeat"/>
+    </div>
+    <div class="field">
+        <label>邮箱：</label>
+        <input type="email" name="email"/>
+    </div>
+    <button class="ui button" type="submit">注册</button>
+</form>
+
+<%- include footer %>  
